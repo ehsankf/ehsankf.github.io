@@ -1,0 +1,17 @@
+- title: General Information
+  type: map
+  contents:
+    - name: Full Name
+      value: Zain Hasan
+
+- title: Education
+  type: time_table
+  contents: []
+
+- title: Experience
+  type: time_table
+  contents: []
+
+- title: Honors and Awards
+  type: time_table
+  contents: []

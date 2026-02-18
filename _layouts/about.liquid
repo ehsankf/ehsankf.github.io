@@ -1,0 +1,107 @@
+---
+layout: default
+---
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var c = document.querySelector('.container.mt-5');
+    if (c) c.classList.replace('mt-5', 'mt-3');
+  });
+</script>
+<div class="post">
+  {% if page.profile %}
+    <style>
+      .ascii-profile {
+        font-family: 'JetBrains Mono', 'DejaVu Sans Mono', 'Courier New', monospace;
+        font-size: 3.3px;
+        line-height: 1.05;
+        letter-spacing: 0.05em;
+        white-space: pre;
+        overflow: hidden;
+        color: var(--global-text-color);
+        background-color: transparent;
+        border-radius: 12px;
+        padding: 6px;
+        display: block;
+        width: fit-content;
+      }
+      .ascii-profile-mobile {
+        display: none;
+      }
+      @media (max-width: 768px) {
+        .ascii-profile {
+          display: none;
+        }
+        .ascii-profile-mobile {
+          display: block;
+        }
+        .ascii-profile-mobile img {
+          width: 100%;
+          max-width: 320px;
+          border-radius: 12px;
+        }
+      }
+    </style>
+    <div class="profile float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}" style="margin-top: 0;">
+      <pre class="ascii-profile">{% include prof_pic_ascii.txt %}</pre>
+      <div class="ascii-profile-mobile">
+        <img src="{{ 'assets/img/prof_pic_ascii.png' | relative_url }}" alt="Profile picture ASCII art" loading="eager">
+      </div>
+      {% if page.profile.more_info %}
+        <div class="more-info">{{ page.profile.more_info }}</div>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <header class="post-header" style="margin-bottom: 0.75rem;">
+    <h1 class="post-title">
+      {% if site.title == 'blank' %}
+        <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
+        {{ site.last_name }}
+      {% else %}
+        {{ site.title }}
+      {% endif %}
+    </h1>
+    <p class="desc" style="margin-bottom: 0;">{{ page.subtitle }}</p>
+  </header>
+
+  <article>
+    <div class="clearfix">{{ content }}</div>
+
+    <!-- News -->
+    {% if page.announcements and page.announcements.enabled %}
+      <h2>
+        <a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a>
+      </h2>
+      {% include news.liquid limit=true %}
+    {% endif %}
+
+    <!-- Latest posts -->
+    {% if page.latest_posts and page.latest_posts.enabled %}
+      <h2>
+        <a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a>
+      </h2>
+      {% include latest_posts.liquid %}
+    {% endif %}
+
+    <!-- Selected papers -->
+    {% if page.selected_papers %}
+      <h2>
+        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">selected publications</a>
+      </h2>
+      {% include selected_papers.liquid %}
+    {% endif %}
+
+    <!-- Social -->
+    {% if page.social %}
+      <div class="social" style="margin-top: 0.25rem;">
+        <div class="contact-icons" style="font-size: 2.4rem;">{% include social.liquid %}</div>
+
+        <div class="contact-note">{{ site.contact_note }}</div>
+      </div>
+    {% endif %}
+
+    {% if site.newsletter and site.newsletter.enabled and site.footer_fixed %}
+      {% include newsletter.liquid center=true %}
+    {% endif %}
+  </article>
+</div>

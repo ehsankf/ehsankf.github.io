@@ -1,0 +1,52 @@
+/*******************************************************************************
+ * Variables used throughout the theme.
+ * To adjust anything, simply edit the variables below and rebuild the theme.
+ ******************************************************************************/
+
+@use "sass:color";
+
+// Colors
+$red-color: #ef4444 !default;
+$red-color-dark: #b91c1c !default;
+$orange-color: #f59e0b !default;
+$blue-color: #3b82f6 !default;
+$blue-color-dark: #1e40af !default;
+$cyan-color: #22d3ee !default;
+$light-cyan-color: color.adjust($cyan-color, $lightness: 25%);
+$green-color: #10b981 !default;
+$green-color-lime: #84cc16 !default;
+$green-color-dark: #059669 !default;
+$green-color-light: #d1fae5 !default;
+$green-color-bright: #34d399 !default;
+$purple-color: #0891b2 !default;
+$light-purple-color: color.adjust($purple-color, $lightness: 25%);
+$pink-color: #ec4899 !default;
+$pink-color-light: #fce7f3 !default;
+$yellow-color: #eab308 !default;
+
+$grey-color: #64748b !default;
+$grey-color-light: #cbd5e1;
+$grey-color-dark: #0f172a;
+$grey-900: #1e293b;
+
+$white-color: #ffffff !default;
+$black-color: #000000 !default;
+
+// Theme colors
+
+$code-bg-color-light: rgba($purple-color, 0.05);
+$code-bg-color-dark: #1e293b !default;
+
+// Font awesome location
+$fa-font-path: "../webfonts";
+
+// Tabler icons location
+$ti-font-path: "../fonts";
+
+// Back To Top button config
+$back-to-top-z-index: 10;
+$back-to-top-bottom: 30px;
+$back-to-top-right: 30px;
+$back-to-top-diameter: 40px;
+$back-to-top-height: $back-to-top-diameter;
+$back-to-top-width: $back-to-top-diameter;
